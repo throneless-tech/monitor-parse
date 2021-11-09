@@ -1,17 +1,20 @@
 {
-  "name": "monitor-parse",
+  "name": "pdf2feed",
   "version": "1.0.0",
-  "description": "A quick parser for specific PDF files",
+  "description": "Extract URLs from a PDF and turn it into a feed",
   "main": "index.js",
   "scripts": {
+    "parse": "node ./index.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Josh King <josh@throneless.tech>",
+  "contributors": [
+    "Harum Helmy <harum@throneless.tech>",
+    "Josh King <josh@throneless.tech>"
+  ],
   "license": "AGPL-3.0-or-later",
   "dependencies": {
     "commander": "^8.3.0",
     "open-graph-scraper": "^4.10.0",
-    "pdf.js-extract": "^0.1.5",
-    "pdf2json": "^1.3.1"
+    "pdf.js-extract": "^0.1.5"
   }
 }

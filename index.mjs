@@ -6,7 +6,7 @@ import ogs from "open-graph-scraper";
 const program = new Command();
 program
   .requiredOption("-i, --in <path>", "Input file")
-  .requiredOption("-o, --out <path>", "Output file");
+  .option("-o, --out <path>", "Output file");
 program.parse(process.argv);
 const options = program.opts();
 
@@ -41,8 +41,14 @@ async function main() {
         console.error("Error:", err);
       }
     });
-    console.log("Done!")
-    await fs.writeFile(options.out, JSON.stringify(await Promise.all(results), null, 2));
+
+    const output = JSON.stringify(await Promise.all(results), null, 2);
+    if (options.out) {
+      await fs.writeFile(options.out, output);
+      console.log("Done!")
+    } else {
+      console.log(output)
+    }
   } catch (err) {
     console.error("Error:", err);
   }
